@@ -27,7 +27,7 @@ for python_version in ["3.10.11", "3.11.5", "3.12.0"]:
         ce_data = json.load(ce)
     
     for size in ["Small", "Medium", "Large"]:
-        for scale in ["Small", "Medium", "Large"]:
+        for scale in ["XSmall", "Small", "SubMedium", "Medium", "SuperMedium", "Large"]:
             upstream = filter_outliers(upstream_data[f"{size} Surface"][f"{scale} Multiplier"])
             ce = filter_outliers(ce_data[f"{size} Surface"][f"{scale} Multiplier"])
 
@@ -48,10 +48,16 @@ for python_version in ["3.10.11", "3.11.5", "3.12.0"]:
                     title += "1000x1000 pixel source surface, "
                     
             match scale:
+                case "XSmall":
+                    title += "1.5x scale"
                 case "Small":
                     title += "2x scale"
+                case "SubMedium":
+                    title += "5x scale"
                 case "Medium":
                     title += "10x scale"
+                case "SuperMedium":
+                    title += "25x scale"
                 case "Large":
                     title += "50x scale"
             

@@ -30,8 +30,11 @@ SMALL_SIZE = 10
 MEDIUM_SIZE = 100
 LARGE_SIZE = 1000
 
+XSMALL_MULTIPLIER = 1.5
 SMALL_MULTIPLIER = 2
+SUBMEDIUM_MULTIPLIER = 5
 MEDIUM_MULTIPLIER = 10
+SUPERMEDIUM_MULTIPLIER = 25
 LARGE_MULTIPLIER = 50
 
 small_surf = pygame.Surface((SMALL_SIZE, SMALL_SIZE))
@@ -43,9 +46,9 @@ fill_surf_with_random_pixels(medium_surf)
 large_surf = pygame.Surface((LARGE_SIZE, LARGE_SIZE))
 fill_surf_with_random_pixels(large_surf)
 
-iterations = 100
+iterations = 10_000
 
-def time_scale_with_multiplier(surf: pygame.Surface, multiplier: int) -> list[float]:
+def time_scale_with_multiplier(surf: pygame.Surface, multiplier: float) -> list[float]:
     print(f"Scaling a surface of size {surf.get_size()} by {multiplier}")
     new_width = surf.get_width() * multiplier
     new_height = surf.get_height() * multiplier
@@ -54,18 +57,27 @@ def time_scale_with_multiplier(surf: pygame.Surface, multiplier: int) -> list[fl
 
 times = {
     "Small Surface": {
+        "XSmall Multiplier": time_scale_with_multiplier(small_surf, XSMALL_MULTIPLIER),
         "Small Multiplier": time_scale_with_multiplier(small_surf, SMALL_MULTIPLIER),
+        "SubMedium Multiplier": time_scale_with_multiplier(small_surf, SUBMEDIUM_MULTIPLIER),
         "Medium Multiplier": time_scale_with_multiplier(small_surf, MEDIUM_MULTIPLIER),
+        "SuperMedium Multiplier": time_scale_with_multiplier(small_surf, SUPERMEDIUM_MULTIPLIER),
         "Large Multiplier": time_scale_with_multiplier(small_surf, LARGE_MULTIPLIER)
     },
     "Medium Surface": {
+        "XSmall Multiplier": time_scale_with_multiplier(medium_surf, XSMALL_MULTIPLIER),
         "Small Multiplier": time_scale_with_multiplier(medium_surf, SMALL_MULTIPLIER),
+        "SubMedium Multiplier": time_scale_with_multiplier(medium_surf, SUBMEDIUM_MULTIPLIER),
         "Medium Multiplier": time_scale_with_multiplier(medium_surf, MEDIUM_MULTIPLIER),
+        "SuperMedium Multiplier": time_scale_with_multiplier(medium_surf, SUPERMEDIUM_MULTIPLIER),
         "Large Multiplier": time_scale_with_multiplier(medium_surf, LARGE_MULTIPLIER)
     },
     "Large Surface": {
+        "XSmall Multiplier": time_scale_with_multiplier(large_surf, XSMALL_MULTIPLIER),
         "Small Multiplier": time_scale_with_multiplier(large_surf, SMALL_MULTIPLIER),
+        "SubMedium Multiplier": time_scale_with_multiplier(large_surf, SUBMEDIUM_MULTIPLIER),
         "Medium Multiplier": time_scale_with_multiplier(large_surf, MEDIUM_MULTIPLIER),
+        "SuperMedium Multiplier": time_scale_with_multiplier(large_surf, SUPERMEDIUM_MULTIPLIER),
         "Large Multiplier": time_scale_with_multiplier(large_surf, LARGE_MULTIPLIER)
     }
 }
