@@ -46,7 +46,7 @@ fill_surf_with_random_pixels(medium_surf)
 large_surf = pygame.Surface((LARGE_SIZE, LARGE_SIZE))
 fill_surf_with_random_pixels(large_surf)
 
-iterations = 10_000
+iterations = 1_000
 
 def time_scale_with_multiplier(surf: pygame.Surface, multiplier: float) -> list[float]:
     print(f"Scaling a surface of size {surf.get_size()} by {multiplier}")
